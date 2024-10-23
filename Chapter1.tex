@@ -1,0 +1,146 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[UTF-8]{ctex}
+\begin{document}
+\section{\S1 绪论}
+\subsection{\S1-1 集合}
+\subsubsection{To prove $ \sqrt{2} $ is not rational number:}
+\paragraph{Proof:}
+Assume that $\sqrt{2}$ is a rational number.\\
+Then, 
+\begin{equation*}
+    \sqrt{2} = \frac{p}{q}, \text{ where } (p, q) = 1
+\end{equation*}
+Square both sides of the equation,
+\begin{equation*}
+    2 = \frac{p^2}{q^2}
+\end{equation*}
+Then, 
+\begin{equation}
+    2q^2 = p^2
+    \label{eq:transform}
+\end{equation}
+If $p$ is an \textbf{odd} number, $p^2$ won't have a factor $2$\\
+Then $p$ is an \textbf{even} number \\
+So, we can let 
+\begin{equation*}
+    p = 2k, \text{ where } k \in \mathbb{Z}
+\end{equation*}
+Then, substitute $p$ back the equation $\ref{eq:transform}$, we get
+\begin{equation*}
+    q^2 = 2k^2
+\end{equation*}
+Hence, 
+\begin{equation*}
+    q = \sqrt{2}k
+\end{equation*}
+It has conflicts with $(p, q) = 1$, because $p$ and $q$ has the common factor $k$ in this case.
+So, $\sqrt{2}$ is an irrational number. \square
+
+\subsubsection{证明区间$(0, 1)$之间的有理数集是可列集}
+\paragraph{Proof:}
+可列集是指可以按某规律排成一列的无限集，通常可以用类似对角线的方式排列。\\
+设$(0, 1)$之间的有理数集合为$F$，则
+\begin{equation*}
+    F = \{\frac{1}{2}, \frac{1}{3}, \frac{2}{3}, \frac{1}{4}, \frac{3}{4} \dots{} \frac{p}{q}\} \text{ 其中 } p, q \in \mathbb{N} \text{ } \square
+\end{equation*}
+
+\subsubsection{证明有理集 $\mathbb{Q}$ 是可列集}
+\paragraph{Proof:}
+由于可列集的并是可列集，而有理集 $\mathbb{Q}$ 可以表示为可列集 $(n, n + 1]$ 的并。上文已经证明 $(0, 1)$ 之间的有理数为可列集，其和 $\{1\}$ 的并也是可列集，即有理集 $\mathbb{Q}$ 也是可列集。 $\square$
+\paragraph{Ref:}
+上文用到了两个定理：\\
+\textbf{可列集和可列集的并是可列集}\\
+这里给出简单证明：\\
+如可列集 $A$ 和 $B$ 角标都为从 $1$ 开始的正整数，那么将 $A$ 集合的所有坐标都从 $n$ 变为 $2k + 1$ ，同时将 $B$ 集合都所有坐标都从 $n$ 变为 $2k$ ，将两个集合中重复的元素删去，我们得到的新集合就是一个可列集。\\
+\textbf{可列集和有限集的并是可列集}\\
+这里给出简单证明：\\
+如可列集 $A$ 和有限集 $B$ 取并集，那么 $\text{card}(B) = k \text{ 且 } k \in \mathbb{N}$ ，因此我们将可列集 $A$ 的所有元素的角标 $n$ 都变为 $n + k$ ，再将可列集 $A$ 中与 $B$ 重复的元素删除，并集得到的新集合就是一个可列集。\\
+构造可列集的关键是能找到一个映射，使得原区间能与自然数区间一一对应，除了上文提到过的有理数集 $\mathbb{Q}$ 是可列集外，还有自然数集 $\mathbb{N}$， 整数集 $\mathbb{Z}$。\\
+特别的，有限个可列集的 Descartes 积也是可列集，例如：$\mathbb{Z}^n$ 对于任意 $n \in \mathbb{N}$均是可列集。
+
+\subsubsection{若 $A_{n} = \{x | x > \frac{1}{n}\}, \text{ 求 } \bigcup_{i = 1}^{\infty} A_n$}
+
+\subsubsection{若 $A_{n} = ( a - \frac{1}{n}, b + \frac{1}{n} ), \text{ 证明： } \bigcap_{i=1}^{\infty}A_n = [a, b]$}
+
+\subsection{\S 映射}
+\subsubsection{构造一个 $(0, 1)$ 到 $[0, 1]$ 的双射}
+\paragraph{Proof:}
+想要在两个集合中构造一个双射，可以思考类似 Hilbert 旅馆的方式，将有限集插入无限集的前面，去构造双射。不难看出，此题目试图让我们构造一个集合和其并两个数的新集合之间形成的一一对应，那么就可以在这个集合中找到一个无穷数列，使他一直处于集合中，再将无穷数列中前有限个数字单独映射到两个新数中。\\
+\[
+f(x) =
+\begin{cases}
+    x,  & \text{if } x \in (0, 1) \text{ 且 } x \neq (\frac{1}{2})^n, n \in \mathbb{N} \\
+    0,  & \text{if } x = \frac{1}{2} \\
+    1,  & \text{if } x = \frac{1}{4} \\
+    4x, & \text{if } x = (\frac{1}{2})^{n - 2}, n \in \mathbb{N}
+\end{cases}
+\]
+正如上文所说，这个双射中 $(\frac{1}{2})^n$ 就是一个无穷级数，而且这个级数恰巧在 $(0, 1)$ 这个区间内，如果我们把他的第一项和第二项分别对应 $0$ 和 $1$ 两个数字，其余项数向前移动两个，那么我们就得到了一个符合条件的映射。\\
+证明如下：\\
+由于该函数满足若 $x_1 \neq x_2$ ，则 $f(x_1) \neq f(x_2)$，即为单射。\\
+且满足 $[0, 1]$ 中的每一个元素都有 $(0, 1)$ 的原像与之对应，即为满射。$\square$ \\
+\subsection{\S 实数}
+此处没有例题，休息一下吧。
+\subsection{\S 常用不等式举例}
+\subsubsection{设 $e_{n} = (1 + \frac{1}{n})^n$. 证明数列 $e_n$ 单调增加且 $e_n < 4$}
+根据均值不等式，我们可以得到
+\begin{align*}
+    (1 + \frac{1}{n})(1 + \frac{1}{n})\dots(1 + \frac{1}{n})1 &< (\frac{n(1 + \frac{1}{n}) + 1}{n + 1})^{n + 1}\\
+    &= (\frac{n+2}{n+1})^{n+1}\\
+    &= (1 + \frac{1}{n + 1})^{n+1}\\
+    &= e_{n+1}
+\end{align*}
+由于 $1 + \frac{1}{n} \neq 1$ ，没有取等号，所以我们证明了 $e_n$ 的单调性。\\
+继续证明其小于 $4$，我们可以用二项式定理：
+\begin{align*}
+    (1 + \frac{1}{n})^n &= 1 + \binom{n}{1}(\frac{1}{n}) + \binom{n}{2}(\frac{1}{n})^2 + \dots + \binom{n}{n}(\frac{1}{n})^n \\
+    &= 1 + 1 + \frac{n(n-1)}{2} \cdot \frac{1}{n^2} + \dots + (\frac{1}{n})^n \\
+    &< 1 + 1 + \frac{1}{2} + \frac{1}{4} + \dots + \frac{1}{2^{n-2}} \\
+    &= 1 + \frac{1-(\frac{1}{2})^{n-1}}{1-\frac{1}{2}} \\
+    &= 1 + 2 \cdot (1 - (\frac{1}{2})^{n-1}) \\
+    &< 3
+    \text{    } < 4 \text{ } \square
+\end{align*}
+\subsubsection{设实数 $a > 1, n \in \mathbb{N}$. 证明：$\sqrt[n]{a} - 1 \leq \frac{a-1}{n}$}
+利用均值不等式，将左式转变为：
+\begin{align*}
+    \sqrt[n]{a \cdot 1 \cdot 1 \dots 1} - 1 &\leq \frac{a + n - 1}{n} - 1 \\
+    &= \frac{a-1}{n} \text{ } \square
+\end{align*}
+\subsubsection{证明不等式： $\sqrt[n]{n} - 1 < \frac{\sqrt{2}}{\sqrt{n}}$}
+用 $a$ 代换左侧式子，可得：
+\begin{align*}
+    a &= \sqrt[n]{n} - 1 \\
+    a + 1 &= \sqrt[n]{n} \\
+    (a + 1)^n &= n \\
+    \text{将其二项式展开，可得：} \\
+    n &= 1 + na + \frac{n(n-1)}{2}a + \dots + a^n \\
+    \text{即可以知道：} \\
+    n &> na \\ 
+    a &< 1 \\
+    \text{即：} \\
+    a &\in (-1, 1) \\
+    \text{同时：} \\
+    n &> \frac{n(n-1)}{2}a \\
+    1 &> \frac{n-1}{2}a \\
+    \frac{1}{a} &> \frac{n-1}{2} \\
+    \frac{2}{a} + 1 &> n \\
+    \sqrt{\frac{2}{a} + 1} &> \sqrt{n} \\
+    \frac{\sqrt{2}}{\sqrt{\frac{2}{a} + 1}} &< \frac{\sqrt{2}}{\sqrt{n}} \\
+    \text{原式可以变为证明：} \\
+    a &< \frac{\sqrt{2}}{\frac{2}{a} + 1} \\
+    a^2 &< \frac{2}{\frac{2}{a} + 1} \\
+    a &< \frac{2}{2 + a} \\
+    \text{显然，对于任意$a \in (-1, 1)$来说，此式子成立。 } \square
+\end{align*}
+\end{document}
