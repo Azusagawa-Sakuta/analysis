@@ -64,14 +64,77 @@ So, $\sqrt{2}$ is an irrational number. \square
 如可列集 $A$ 和 $B$ 角标都为从 $1$ 开始的正整数，那么将 $A$ 集合的所有坐标都从 $n$ 变为 $2k + 1$ ，同时将 $B$ 集合都所有坐标都从 $n$ 变为 $2k$ ，将两个集合中重复的元素删去，我们得到的新集合就是一个可列集。\\
 \textbf{可列集和有限集的并是可列集}\\
 这里给出简单证明：\\
-如可列集 $A$ 和有限集 $B$ 取并集，那么 $\text{card}(B) = k \text{ 且 } k \in \mathbb{N}$ ，因此我们将可列集 $A$ 的所有元素的角标 $n$ 都变为 $n + k$ ，再将可列集 $A$ 中与 $B$ 重复的元素删除，并集得到的新集合就是一个可列集。\\
+如可列集 $A$ 和有限集 $B$ 取并集，那么 $\text{card}(B) = k \land k \in \mathbb{N}$ ，因此我们将可列集 $A$ 的所有元素的角标 $n$ 都变为 $n + k$ ，再将可列集 $A$ 中与 $B$ 重复的元素删除，并集得到的新集合就是一个可列集。\\
 构造可列集的关键是能找到一个映射，使得原区间能与自然数区间一一对应，除了上文提到过的有理数集 $\mathbb{Q}$ 是可列集外，还有自然数集 $\mathbb{N}$， 整数集 $\mathbb{Z}$。\\
 特别的，有限个可列集的 Descartes 积也是可列集，例如：$\mathbb{Z}^n$ 对于任意 $n \in \mathbb{N}$均是可列集。
 
 \subsubsection{若 $A_{n} = \{x | x > \frac{1}{n}\}, \text{ 求 } \bigcup_{i = 1}^{\infty} A_n$}
-
-\subsubsection{若 $A_{n} = ( a - \frac{1}{n}, b + \frac{1}{n} ), \text{ 证明： } \bigcap_{i=1}^{\infty}A_n = [a, b]$}
-
+\paragraph{Solution:}
+如此题解相当于写结论再证明。\\
+由于题设中 $n \in \mathbb{N}$，因此满足 $n > 0$，因此 
+\begin{equation}
+    \bigcup_{i = 1}^{\infty}A_n \subseteq (0, +\infty)
+    \label{subset_pos0}
+\end{equation}
+对于元素 $0$，易得，
+\begin{equation*}
+    \forall n \in \mathbb{N}, 0 \notin A_n
+\end{equation*}
+因此
+\begin{equation*}
+    0 \notin \bigcup_{i = 1}^{\infty} A_n
+\end{equation*}
+由于 $n > 0$，因此，
+\begin{equation*}
+    \forall n \in \mathbb{N}, \mathbb{R} \textbackslash A_n = \{x|x \leq \frac{1}{n}\}
+\end{equation*}
+即，
+\begin{equation*}
+    \mathbb{R} \textbackslash (0, +\infty) \subseteq \mathbb{R} \textbackslash A_n
+\end{equation*}
+即，
+\begin{equation*}
+    \mathbb{R} \textbackslash (0, +\infty) \subseteq \mathbb{R} \textbackslash \bigcup_{i = 1}^{\infty} A_n
+\end{equation*}
+两侧同时取补集，得，
+\begin{equation}
+    (0, +\infty) \subseteq \bigcup_{i = 1}^{\infty} A_n
+    \label{subset_neg0}
+\end{equation}
+根据 $\ref{subset_pos0}$ 和 $\ref{subset_neg0}$ 可知，
+\begin{equation*}
+    \bigcup_{i = 1}^{\infty}A_n = (0, +\infty) \text{ } \square
+\end{equation*}
+\subsubsection{若 $A_{n} = ( a - \frac{1}{n}, b + \frac{1}{n} ), \text{ 证明： } 
+\bigcap_{i=1}^{\infty}A_n = [a, b]$}
+\paragraph{Proof:} 
+如此集合相等的证明题可以按照互为子集证明。\\
+由于 $a - \frac{1}{n} < a, b + \frac{1}{n} > b$，因此 $[a, b]$ 一定在 $\bigcap_{i=1}^{\infty}A_n$ 中。\\
+即 
+\begin{equation}
+    [a, b] \subseteq \bigcap_{i=1}^{\infty}A_n
+    \label{subset_pos1}
+\end{equation}
+\begin{equation*}
+    \forall \epsilon > 0, \exists N = [\frac{1}{\epsilon}] + 1 \in \mathbb{N}, \forall n > N, \text{ s.t. } a - \epsilon < a - \frac{1}{n}, b + \epsilon > b + \frac{1}{n}
+\end{equation*}
+即此时，
+\begin{equation*}
+    \forall \epsilon > 0, a - \epsilon \notin \bigcap_{n=1}^{\infty}A_n, b + \epsilon \notin \bigcap_{n=1}^{\infty}A_n
+\end{equation*}
+即，
+\begin{equation*}
+    \mathbb{R} \textbackslash [a, b] \subseteq \mathbb{R} \textbackslash \bigcap_{n=1}^{\infty}A_n
+\end{equation*}
+那么，两侧同时取补集，有，
+\begin{equation}
+    \bigcap_{n=1}^{\infty}A_n \subseteq [a, b]
+    \label{subset_neg1}
+\end{equation}
+根据 $\ref{subset_pos1}$ 和 $\ref{subset_neg1}$，可知，
+\begin{equation*}
+    \bigcap_{i=1}^{\infty}A_n = [a, b] \text{ } \square
+\end{equation*}
 \subsection{\S 映射}
 \subsubsection{构造一个 $(0, 1)$ 到 $[0, 1]$ 的双射}
 \paragraph{Proof:}
@@ -79,7 +142,7 @@ So, $\sqrt{2}$ is an irrational number. \square
 \[
 f(x) =
 \begin{cases}
-    x,  & \text{if } x \in (0, 1) \text{ 且 } x \neq (\frac{1}{2})^n, n \in \mathbb{N} \\
+    x,  & \text{if } x \in (0, 1) \land x \neq (\frac{1}{2})^n, n \in \mathbb{N} \\
     0,  & \text{if } x = \frac{1}{2} \\
     1,  & \text{if } x = \frac{1}{4} \\
     4x, & \text{if } x = (\frac{1}{2})^{n - 2}, n \in \mathbb{N}
@@ -142,5 +205,18 @@ f(x) =
     a^2 &< \frac{2}{\frac{2}{a} + 1} \\
     a &< \frac{2}{2 + a} \\
     \text{显然，对于任意$a \in (-1, 1)$来说，此式子成立。 } \square
+\end{align*}
+\subsubsection{证明：任意两个不同实数之间必有有理数：}
+\paragraph{Proof:}
+设 $a, b \in \mathbb{R}$，\land $a < b$。\\
+若 $b - a > 1$，则 $a$ 和 $b$ 之间必有 $c = [b]$ 满足 $a < c < b$ \\
+设 $0 < b - 1 < 1$，记：
+\begin{align*}
+    b - a &= \frac{C_n}{10^n} + \frac{C_{n + 1}}{10^{n + 1}} + \dots, n \geq 1, C_{i} \geq 1 \\
+    10^{n + 1}(b - a) &= 10 * C_n + C_{n + 1} + \dots > 1 \\
+    10^{n + 1}(b) > 1 + 10^{n + 1}a &\geq 1 + [10^{n + 1}a] > 10^{n + 1}a \\
+    b &> \frac{1 + [10^{n + 1}a]}{10^{n + 1}} > a \\
+    \text{令 $c = \frac{1 + [10^{n + 1}a]}{10^{n + 1}}$，显然， $c \in \mathbb{Q}$} \\
+    a &< c < b \text{ } \square
 \end{align*}
 \end{document}
